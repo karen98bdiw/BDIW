@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
         curentUser = FirebaseAuth.getInstance().currentUser
 
         if (curentUser != null) {
-            startActivity(Intent(this@MainActivity,HomeActivity::class.java))
+//            startActivity(Intent(this@MainActivity,HomeActivity::class.java))
         }else{
             startActivity(Intent(this@MainActivity,SignUpActivity::class.java))
         }

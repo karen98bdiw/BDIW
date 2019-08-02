@@ -32,7 +32,7 @@ class SignInActivity : AppCompatActivity() {
                     .addOnCompleteListener(this@SignInActivity,OnCompleteListener<AuthResult>(){
                         if(it.isSuccessful){
                             Log.e("signIn","yes|mail:${it.result.user.email}|")
-                            val intent = Intent(this@SignInActivity,HomeActivity::class.java)
+                            val intent = Intent(this@SignInActivity,MainActivity::class.java)
                             startActivity(intent)
 
                         }else{
