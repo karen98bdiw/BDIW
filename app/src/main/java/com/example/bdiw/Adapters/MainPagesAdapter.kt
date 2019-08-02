@@ -1,4 +1,4 @@
-package com.example.bdiw
+package com.example.bdiw.Adapters
 
 
 import androidx.fragment.app.Fragment

@@ -2,19 +2,21 @@ package com.example.bdiw
 
 import android.content.Context
 import android.util.Log
-import android.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.ViewPager
+import com.example.bdiw.Adapters.MainPagesAdapter
 import com.example.bdiw.MainFragments.Fragment1
 import com.example.bdiw.MainFragments.Fragment2
 import com.example.bdiw.MainFragments.Fragment3
+import com.example.bdiw.NewsFromApi.ArchiveArticlesRecyclerViewAdapter
+import com.example.bdiw.NewsFromApi.ArticlesRecyclerViewAdapter
+import com.example.bdiw.NewsFromApi.ArticlesRequestInterface
 import com.example.bdiw.RealTimeNewsParser.RealTimeNewsBaseModel
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx
-import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.Retrofit
@@ -24,9 +26,12 @@ class Utils {
 
     companion object {
 
+        val MESAGE_VIEW_LEFT = 1
+        val MESAGE_VIEW_RIGHT = 2
         val NEWS_API_BASE_URL = "https://api.nytimes.com/svc/mostpopular/v2/emailed/"
         val REAL_TIME_NEWS_BASE_URL = "https://api.nytimes.com/svc/news/v3/content/all/"
         val NEWS_API_KEY = "eqPZhtMDSGS1MHqeeWALczfD1G8qCaGT"
+
 
         var REQUEST_CALLED = false
 
@@ -81,7 +86,8 @@ class Utils {
                         Log.e("response","tittle:${i.title}|desc${i.abstract}|img:${i.multimedia.get(0).url}")
                     }
 
-                    val adapter = ArticlesRecyclerViewAdapter(response!!.body()!!.results,context)
+                    val adapter =
+                        ArticlesRecyclerViewAdapter(response!!.body()!!.results, context)
                     val layoutManager = LinearLayoutManager(context,RecyclerView.VERTICAL ,false)
 
                     articlesRecyclerView.layoutManager = layoutManager
@@ -116,7 +122,10 @@ class Utils {
                         Log.e("response","tittle:${i.title}|desc${i.abstract}|img:${i.media.get(0).`media-metadata`.get(0).url}")
                     }
 
-                    val adapter = ArchiveArticlesRecyclerViewAdapter(response.body()!!.results,context)
+                    val adapter = ArchiveArticlesRecyclerViewAdapter(
+                        response.body()!!.results,
+                        context
+                    )
                     val layoutManager = LinearLayoutManager(context,RecyclerView.VERTICAL,false)
 
                     articlesRecyclerView.layoutManager = layoutManager

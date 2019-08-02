@@ -1,4 +1,4 @@
-package com.example.bdiw
+package com.example.bdiw.NewsFromApi
 
 import android.content.Context
 import android.util.Log
@@ -7,11 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.bdiw.R
+import com.example.bdiw.RealTimeNewsParser.Results
 import kotlinx.android.synthetic.main.articles_recycler_item.view.*
 
-class ArchiveArticlesRecyclerViewAdapter(data:List<com.example.bdiw.NewsJsonParserModel.Results>, context:Context) : RecyclerView.Adapter<ArchiveArticlesRecyclerViewAdapter.ViewHolder>() {
+class ArticlesRecyclerViewAdapter(data:List<com.example.bdiw.RealTimeNewsParser.Results>, context:Context) : RecyclerView.Adapter<ArticlesRecyclerViewAdapter.ViewHolder>() {
 
-    lateinit var data:List<com.example.bdiw.NewsJsonParserModel.Results>
+    lateinit var data:List<Results>
     lateinit var context: Context
 
     init {
@@ -40,7 +42,7 @@ class ArchiveArticlesRecyclerViewAdapter(data:List<com.example.bdiw.NewsJsonPars
         p0.articleAbstractView.setText(curentArticle.abstract)
         Glide
             .with(p0.articleImageView.context)
-            .load(curentArticle.media.get(0).`media-metadata`.get(0).url)
+            .load(curentArticle.multimedia.get(0).url)
             .into(p0.articleImageView)
 
     }
