@@ -1,4 +1,4 @@
-package com.example.bdiw
+package com.example.bdiw.MainFragments
 
 import android.os.Bundle
 
@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.bdiw.R
+import com.example.bdiw.Utils
 import kotlinx.android.synthetic.main.fragment1_view.*
 
 class Fragment1 : Fragment(){
@@ -23,7 +25,7 @@ class Fragment1 : Fragment(){
         super.onViewCreated(view, savedInstanceState)
         Log.e("requestCalled","${Utils.REQUEST_CALLED}")
          //it will try to get curent news from server bu on failure it will get news archive
-         Utils.doRequestForCurentArticles(this@Fragment1.context!!,articlesRecyclerView)
+        Utils.doRequestForCurentArticles(this@Fragment1.context!!, articlesRecyclerView)
          Utils.REQUEST_CALLED = true
 
 

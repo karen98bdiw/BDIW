@@ -2,9 +2,12 @@ package com.example.bdiw
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.core.view.GravityCompat
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.tabs.TabLayout
@@ -15,18 +18,18 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         setSupportActionBar(toolBar)
+
+        Utils.constructToolBar(toolBar,drawerLayout)
         Utils.constructMainViewPager(viewPager,supportFragmentManager)
+        Utils.constructBottomNavigationView(bottomNavigationView)
         tabLayout.setupWithViewPager(viewPager)
         navigationView.setNavigationItemSelectedListener(this)
-        bottomNavigationView.setTextVisibility(false)
-        bottomNavigationView.enableShiftingMode(false)
-        bottomNavigationView.enableItemShiftingMode(false)
-        bottomNavigationView.enableAnimation(false)
-        for(i in 0 until  bottomNavigationView.menu.size()){
-            bottomNavigationView.setIconTintList(i,null)
-        }
+
+
+
+
+
 
         bottomNavigationView.setOnNavigationItemSelectedListener {
             when(it.itemId){

@@ -2,11 +2,19 @@ package com.example.bdiw
 
 import android.content.Context
 import android.util.Log
+import android.widget.Toolbar
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.ViewPager
+import com.example.bdiw.MainFragments.Fragment1
+import com.example.bdiw.MainFragments.Fragment2
+import com.example.bdiw.MainFragments.Fragment3
 import com.example.bdiw.RealTimeNewsParser.RealTimeNewsBaseModel
+import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx
+import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.Retrofit
@@ -28,6 +36,26 @@ class Utils {
             mainPagesAdapter.addFragment(Fragment2(),"secont")
             mainPagesAdapter.addFragment(Fragment3(),"third")
             viewPager.adapter = mainPagesAdapter
+        }
+
+        fun constructBottomNavigationView(bottomNavigationView:BottomNavigationViewEx){
+            bottomNavigationView.setTextVisibility(false)
+            bottomNavigationView.enableShiftingMode(false)
+            bottomNavigationView.enableItemShiftingMode(false)
+            bottomNavigationView.enableAnimation(false)
+            for(i in 0 until  bottomNavigationView.menu.size()){
+                bottomNavigationView.setIconTintList(i,null)
+            }
+        }
+
+        fun constructToolBar(toolbar: androidx.appcompat.widget.Toolbar,drawerLayout:DrawerLayout){
+
+
+            toolbar.setNavigationIcon(R.drawable.ic_menu)
+
+            toolbar.setNavigationOnClickListener {
+                drawerLayout.openDrawer(GravityCompat.START)
+            }
         }
 
         fun doRequestForCurentArticles(context:Context,articlesRecyclerView: RecyclerView){
@@ -62,6 +90,8 @@ class Utils {
 
             })
         }
+
+
 
        fun doRequestForMostPopularArticles(context: Context,articlesRecyclerView: RecyclerView){
            Log.e("doRequestMost","called")
