@@ -36,7 +36,7 @@ class SignInActivity : AppCompatActivity() {
                             startActivity(intent)
 
                         }else{
-                            Log.e("signIn","noSign")
+                            Log.e("signIn","noSignin")
                         }
                     })
             }
