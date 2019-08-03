@@ -1,6 +1,7 @@
 package com.example.bdiw.Activities
 
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -8,6 +9,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import com.example.bdiw.Adapters.UsersRecyclerViewAdapter
+import com.example.bdiw.BdiwBrowser.BdiwBrowser
 import com.example.bdiw.Models.User
 import com.example.bdiw.R
 import com.example.bdiw.Utils
@@ -118,7 +120,7 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
 
         when(item?.itemId){
-            R.id.searcht -> Toast.makeText(this@MainActivity,"toolBar:Search Item Selected",Toast.LENGTH_LONG).show()
+            R.id.searcht -> tryBrowser()
             R.id.item1t -> Toast.makeText(this@MainActivity,"toolBar:Item1 Selected",Toast.LENGTH_LONG).show()
             R.id.item2t -> Toast.makeText(this@MainActivity,"toolBar:Item2 Selected",Toast.LENGTH_LONG).show()
             R.id.toolBarSignOutItem -> signOut()
@@ -127,6 +129,8 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
 
         return super.onOptionsItemSelected(item)
     }
+
+
 
     fun setOnNavigationItemSelectedListener(){
         bottomNavigationView.setOnNavigationItemSelectedListener {
@@ -147,6 +151,11 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
         finish()
     }
 
+    private fun tryBrowser() {
+        val intent = Intent(this@MainActivity,BdiwBrowser::class.java)
+        intent.setData(Uri.parse("http://developer.alexanderklimov.ru/android/"))
+        startActivity(intent)
+    }
 
 
 }
