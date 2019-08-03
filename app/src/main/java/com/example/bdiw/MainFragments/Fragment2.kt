@@ -31,7 +31,8 @@ class Fragment2 : Fragment() {
     lateinit var users:ArrayList<User>
     lateinit var adapter: UsersRecyclerViewAdapter
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.activity_home,container,false)
+        val view = inflater.inflate(R.layout.fragment2_view,container,false)
+
         mAut = FirebaseAuth.getInstance()
         mDatabase = FirebaseDatabase.getInstance()
         curentUser = FirebaseAuth.getInstance().currentUser
@@ -40,12 +41,6 @@ class Fragment2 : Fragment() {
 
         view.usersRecyclerView.layoutManager = LinearLayoutManager(this.context, RecyclerView.VERTICAL,false)
 
-
-        view.signOutBtn.setOnClickListener {
-            mAut.signOut()
-            val intent = Intent(this.context, SignUpActivity::class.java)
-            startActivity(intent)
-        }
 
         if(curentUser == null){
             Log.e("isSign","no")
@@ -99,11 +94,5 @@ class Fragment2 : Fragment() {
         return view
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-
-
-    }
 
 }

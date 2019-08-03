@@ -14,12 +14,16 @@ import com.example.bdiw.Utils
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuthSettings
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.navigationmenu_header.view.*
+
+
 
 class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelectedListener {
 
@@ -35,12 +39,7 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
         FirebaseApp.initializeApp(this)
 
         //Main Activity Construct building
-        Utils.constructToolBar(toolBar, drawerLayout)
-        Utils.constructMainViewPager(viewPager, supportFragmentManager)
-        Utils.constructBottomNavigationView(bottomNavigationView)
-        tabLayout.setupWithViewPager(viewPager)
-        navigationView.setNavigationItemSelectedListener(this)
-        setOnNavigationItemSelectedListener()
+
         ///>
 
         //Firebase checking user status
@@ -48,6 +47,12 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
         curentUser = FirebaseAuth.getInstance().currentUser
 
         if (curentUser != null) {
+            Utils.constructToolBar(toolBar, drawerLayout)
+            Utils.constructMainViewPager(viewPager, supportFragmentManager)
+            Utils.constructBottomNavigationView(bottomNavigationView)
+            tabLayout.setupWithViewPager(viewPager)
+            navigationView.setNavigationItemSelectedListener(this)
+            setOnNavigationItemSelectedListener()
 //            startActivity(Intent(this@MainActivity,HomeActivity::class.java))
         }else{
             startActivity(Intent(this@MainActivity,SignUpActivity::class.java))
@@ -57,6 +62,30 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
         ///>
 
 
+        /////costumize navigation view header for curent user
+        val reference = FirebaseDatabase.getInstance().reference.child("users")
+            .addValueEventListener(object :ValueEventListener{
+                override fun onCancelled(p0: DatabaseError) {
+
+                }
+
+                override fun onDataChange(p0: DataSnapshot) {
+
+                    p0.children.forEach {
+                        val user = it.getValue(User::class.java)
+                        if(user!=null && curentUser!=null){
+                            if(user.id.equals(curentUser!!.uid)){
+                                val name = user.name
+                                val surname = user.surname
+                                Utils.costumizeNavigationView(navigationView,name,surname)
+                            }
+                        }
+
+                    }
+
+                }
+
+            })
 
 
 
@@ -92,7 +121,7 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
             R.id.searcht -> Toast.makeText(this@MainActivity,"toolBar:Search Item Selected",Toast.LENGTH_LONG).show()
             R.id.item1t -> Toast.makeText(this@MainActivity,"toolBar:Item1 Selected",Toast.LENGTH_LONG).show()
             R.id.item2t -> Toast.makeText(this@MainActivity,"toolBar:Item2 Selected",Toast.LENGTH_LONG).show()
-            R.id.item3t -> Toast.makeText(this@MainActivity,"toolBar:Item3 Selected",Toast.LENGTH_LONG).show()
+            R.id.toolBarSignOutItem -> signOut()
             else -> Toast.makeText(this@MainActivity,"toolBar:NoItem",Toast.LENGTH_LONG).show()
         }
 
@@ -111,6 +140,13 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
             false
         }
     }
+
+    fun signOut(){
+        mAut.signOut()
+        startActivity(Intent(this@MainActivity,SignUpActivity::class.java))
+        finish()
+    }
+
 
 
 }

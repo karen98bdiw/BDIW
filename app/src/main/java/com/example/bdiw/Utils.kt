@@ -16,7 +16,9 @@ import com.example.bdiw.NewsFromApi.ArchiveArticlesRecyclerViewAdapter
 import com.example.bdiw.NewsFromApi.ArticlesRecyclerViewAdapter
 import com.example.bdiw.NewsFromApi.ArticlesRequestInterface
 import com.example.bdiw.RealTimeNewsParser.RealTimeNewsBaseModel
+import com.google.android.material.navigation.NavigationView
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx
+import kotlinx.android.synthetic.main.navigationmenu_header.view.*
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.Retrofit
@@ -61,6 +63,15 @@ class Utils {
             toolbar.setNavigationOnClickListener {
                 drawerLayout.openDrawer(GravityCompat.START)
             }
+        }
+
+        fun costumizeNavigationView(nV:NavigationView,name:String,surname:String){
+
+            val navHeader = nV.getHeaderView(0)
+
+            navHeader.navigationViewUserName.setText("${name+ " " +surname}")
+
+
         }
 
         fun doRequestForCurentArticles(context:Context,articlesRecyclerView: RecyclerView){
