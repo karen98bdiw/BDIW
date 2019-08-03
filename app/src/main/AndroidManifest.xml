@@ -13,11 +13,11 @@
             android:theme="@style/AppTheme">
         <activity android:name=".BdiwBrowser.BdiwBrowser">
 
-           <intent-filter>
-               <action android:name="bdiwBrowser"/>
-               <category android:name="android.intent.category.DEFAULT"/>
-               <data android:scheme="http"/>
-           </intent-filter>
+           <!--<intent-filter>-->
+               <!--<action android:name="bdiwBrowser"/>-->
+               <!--<category android:name="android.intent.category.DEFAULT"/>-->
+               <!--<data android:scheme="http"/>-->
+           <!--</intent-filter>-->
 
         </activity>
         <activity android:name=".Activities.SignInActivity">

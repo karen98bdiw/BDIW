@@ -8,7 +8,7 @@ data class Results (
 //    @SerializedName("subsection") val subsection : String,
     @SerializedName("title") val title : String,
     @SerializedName("abstract") val abstract : String,
-//    @SerializedName("url") val url : String,
+    @SerializedName("url") val url : String,
 //    @SerializedName("byline") val byline : String,
 //    @SerializedName("thumbnail_standard") val thumbnail_standard : String,
 //    @SerializedName("item_type") val item_type : String,

@@ -1,12 +1,15 @@
 package com.example.bdiw.NewsFromApi
 
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.bdiw.BdiwBrowser.BdiwBrowser
 import com.example.bdiw.R
 import com.example.bdiw.RealTimeNewsParser.Results
 import kotlinx.android.synthetic.main.articles_recycler_item.view.*
@@ -44,6 +47,11 @@ class ArticlesRecyclerViewAdapter(data:List<com.example.bdiw.RealTimeNewsParser.
             .with(p0.articleImageView.context)
             .load(curentArticle.multimedia.get(0).url)
             .into(p0.articleImageView)
+        p0.showMoreView.setOnClickListener {
+            val intent = Intent(this.context,BdiwBrowser::class.java)
+            intent.setData(Uri.parse(curentArticle.url))
+            this.context.startActivity(intent)
+        }
 
     }
 
@@ -53,6 +61,7 @@ class ArticlesRecyclerViewAdapter(data:List<com.example.bdiw.RealTimeNewsParser.
         val articleTitleView = itemView.articleTittleView
         val articleImageView = itemView.articleImageView
         val articleAbstractView = itemView.articleAbstractView
+        val showMoreView = itemView.showMoreView
 
     }
 }

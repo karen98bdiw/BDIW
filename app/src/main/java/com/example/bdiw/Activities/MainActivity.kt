@@ -120,7 +120,7 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
 
         when(item?.itemId){
-            R.id.searcht -> tryBrowser()
+            R.id.searcht -> Toast.makeText(this@MainActivity,"toolBar:Search Item Selected",Toast.LENGTH_LONG).show()
             R.id.item1t -> Toast.makeText(this@MainActivity,"toolBar:Item1 Selected",Toast.LENGTH_LONG).show()
             R.id.item2t -> Toast.makeText(this@MainActivity,"toolBar:Item2 Selected",Toast.LENGTH_LONG).show()
             R.id.toolBarSignOutItem -> signOut()
@@ -151,11 +151,7 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
         finish()
     }
 
-    private fun tryBrowser() {
-        val intent = Intent(this@MainActivity,BdiwBrowser::class.java)
-        intent.setData(Uri.parse("http://developer.alexanderklimov.ru/android/"))
-        startActivity(intent)
-    }
+
 
 
 }

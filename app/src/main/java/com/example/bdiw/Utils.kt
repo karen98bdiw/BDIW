@@ -15,6 +15,7 @@ import com.example.bdiw.MainFragments.Fragment3
 import com.example.bdiw.NewsFromApi.ArchiveArticlesRecyclerViewAdapter
 import com.example.bdiw.NewsFromApi.ArticlesRecyclerViewAdapter
 import com.example.bdiw.NewsFromApi.ArticlesRequestInterface
+import com.example.bdiw.NewsJsonParserModel.NewsJsonBaseModel
 import com.example.bdiw.RealTimeNewsParser.RealTimeNewsBaseModel
 import com.google.android.material.navigation.NavigationView
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx

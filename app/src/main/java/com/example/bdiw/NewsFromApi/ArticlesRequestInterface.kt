@@ -1,6 +1,6 @@
 package com.example.bdiw.NewsFromApi
 
-import com.example.bdiw.NewsJsonBaseModel
+import com.example.bdiw.NewsJsonParserModel.NewsJsonBaseModel
 import com.example.bdiw.RealTimeNewsParser.RealTimeNewsBaseModel
 import retrofit2.Call
 import retrofit2.http.GET
