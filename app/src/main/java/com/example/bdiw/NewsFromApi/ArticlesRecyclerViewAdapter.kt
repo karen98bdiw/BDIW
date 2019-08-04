@@ -2,6 +2,8 @@ package com.example.bdiw.NewsFromApi
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,6 +11,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.target.CustomTarget
+import com.bumptech.glide.request.target.SimpleTarget
+import com.bumptech.glide.request.transition.Transition
 import com.example.bdiw.BdiwBrowser.BdiwBrowser
 import com.example.bdiw.R
 import com.example.bdiw.RealTimeNewsParser.Results
@@ -43,10 +48,22 @@ class ArticlesRecyclerViewAdapter(data:List<com.example.bdiw.RealTimeNewsParser.
 
         p0.articleTitleView.setText(curentArticle.title)
         p0.articleAbstractView.setText(curentArticle.abstract)
+        val imgForshowWidth = curentArticle.multimedia.last().width
+        val imgForshowHeight = curentArticle.multimedia.last().height
+        Log.e("imgPropertys","${imgForshowWidth}:${imgForshowHeight}")
         Glide
             .with(p0.articleImageView.context)
-            .load(curentArticle.multimedia.get(0).url)
-            .into(p0.articleImageView)
+            .asBitmap()
+            .load(curentArticle.multimedia.last().url)
+            .into(object :CustomTarget<Bitmap>(imgForshowWidth,imgForshowHeight){
+                override fun onLoadCleared(placeholder: Drawable?) {
+                }
+
+                override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap>?) {
+                    p0.articleImageView.setImageBitmap(resource)
+                }
+
+            })
         p0.showMoreView.setOnClickListener {
             val intent = Intent(this.context,BdiwBrowser::class.java)
             intent.setData(Uri.parse(curentArticle.url))
