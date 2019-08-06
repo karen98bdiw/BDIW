@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bdiw.Adapters.MessageRecyclerViewAdapter
+import com.example.bdiw.Models.Chat
 import com.example.bdiw.Models.Message
 import com.example.bdiw.Models.User
 import com.google.android.gms.tasks.OnCompleteListener
@@ -54,7 +55,6 @@ class ChatActivity : AppCompatActivity() {
 
 
 
-            notify = true
 
             val messageText = messageInputView.text.toString()
 
@@ -104,7 +104,6 @@ class ChatActivity : AppCompatActivity() {
 
 
     }
-
 
 
 

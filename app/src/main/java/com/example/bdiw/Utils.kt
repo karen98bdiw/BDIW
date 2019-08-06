@@ -1,5 +1,6 @@
 package com.example.bdiw
 
+import android.app.ProgressDialog
 import android.content.Context
 import android.util.Log
 import androidx.core.view.GravityCompat
@@ -38,6 +39,10 @@ class Utils {
 
         var REQUEST_CALLED = false
 
+        var HAVE_RESPONSE = false
+
+        var pd:ProgressDialog?=null
+
         fun constructMainViewPager(viewPager: ViewPager, fm: FragmentManager){
             val mainPagesAdapter = MainPagesAdapter(fm)
             mainPagesAdapter.addFragment(Fragment1(),"first")
@@ -75,7 +80,20 @@ class Utils {
 
         }
 
+        fun setUpProgresDialog(pd:ProgressDialog){
+
+            pd.setTitle("ProgressDialog")
+            pd.setMessage("loading ...")
+            pd.max = 100
+            pd.setProgressStyle(ProgressDialog.STYLE_SPINNER)
+            this.pd = pd
+
+
+
+        }
+
         fun doRequestForCurentArticles(context:Context,articlesRecyclerView: RecyclerView){
+            pd!!.show()
             val retrofit = Retrofit.Builder()
                 .baseUrl(Utils.REAL_TIME_NEWS_BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -93,6 +111,8 @@ class Utils {
                 }
 
                 override fun onResponse(call: Call<RealTimeNewsBaseModel>, response: Response<RealTimeNewsBaseModel>) {
+                    pd!!.dismiss()
+                    HAVE_RESPONSE = true
 
                     for(i in response.body()!!.results){
                         Log.e("response","tittle:${i.title}|desc${i.abstract}|img:${i.multimedia.get(0).url}")
@@ -124,12 +144,14 @@ class Utils {
 
            call.enqueue(object :retrofit2.Callback<NewsJsonBaseModel>{
                override fun onFailure(call: Call<NewsJsonBaseModel>, t: Throwable) {
+                   pd!!.dismiss()
                    Log.e("onResponseFailPopilar","failr")
                    t.printStackTrace()
                }
 
                override fun onResponse(call: Call<NewsJsonBaseModel>, response: Response<NewsJsonBaseModel>) {
-
+                    HAVE_RESPONSE = true
+                   pd!!.dismiss()
                     for(i in response.body()!!.results){
                         Log.e("response","tittle:${i.title}|desc${i.abstract}|img:${i.media.get(0).`media-metadata`.get(0).url}")
                     }

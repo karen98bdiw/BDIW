@@ -1,5 +1,6 @@
 package com.example.bdiw.MainFragments
 
+import android.app.ProgressDialog
 import android.os.Bundle
 
 import android.util.Log
@@ -24,10 +25,15 @@ class Fragment1 : Fragment(){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         Log.e("requestCalled","${Utils.REQUEST_CALLED}")
+
+        val pd = ProgressDialog(this@Fragment1.context)
+
+        Utils.setUpProgresDialog(pd)
+
+
          //it will try to get curent news from server bu on failure it will get news archive
         Utils.doRequestForCurentArticles(this@Fragment1.context!!, articlesRecyclerView)
          Utils.REQUEST_CALLED = true
-
 
 
     }
