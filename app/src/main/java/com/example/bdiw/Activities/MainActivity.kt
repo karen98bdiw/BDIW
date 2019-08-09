@@ -153,6 +153,5 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
 
 
 
-
 }
 

@@ -1,6 +1,7 @@
 package com.example.bdiw.NewsJsonParserModel
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class Media (
     @SerializedName("type") val type : String,
@@ -9,4 +10,4 @@ data class Media (
     @SerializedName("copyright") val copyright : String,
     @SerializedName("approved_for_syndication") val approved_for_syndication : Int,
     @SerializedName("media-metadata") val `media-metadata` : List<`Media-metadata`>
-)
+):Serializable

@@ -30,6 +30,10 @@ class Utils {
 
     companion object {
 
+        var responseForSave:Any? = null
+
+        var IS_FIRST_RUN = true
+
         val MESAGE_VIEW_LEFT = 1
         val MESAGE_VIEW_RIGHT = 2
         val NEWS_API_BASE_URL = "https://api.nytimes.com/svc/mostpopular/v2/emailed/"
@@ -113,6 +117,9 @@ class Utils {
                 override fun onResponse(call: Call<RealTimeNewsBaseModel>, response: Response<RealTimeNewsBaseModel>) {
                     pd!!.dismiss()
                     HAVE_RESPONSE = true
+                    REQUEST_CALLED = true
+
+                    responseForSave = response.body()
 
                     for(i in response.body()!!.results){
                         Log.e("response","tittle:${i.title}|desc${i.abstract}|img:${i.multimedia.get(0).url}")
@@ -120,6 +127,9 @@ class Utils {
 
                     val adapter =
                         ArticlesRecyclerViewAdapter(response!!.body()!!.results, context)
+
+
+
                     val layoutManager = LinearLayoutManager(context,RecyclerView.VERTICAL ,false)
 
                     articlesRecyclerView.layoutManager = layoutManager
@@ -152,6 +162,9 @@ class Utils {
                override fun onResponse(call: Call<NewsJsonBaseModel>, response: Response<NewsJsonBaseModel>) {
                     HAVE_RESPONSE = true
                    pd!!.dismiss()
+                   REQUEST_CALLED = true
+
+                   responseForSave = response.body()
                     for(i in response.body()!!.results){
                         Log.e("response","tittle:${i.title}|desc${i.abstract}|img:${i.media.get(0).`media-metadata`.get(0).url}")
                     }

@@ -1,6 +1,7 @@
 package com.example.bdiw.RealTimeNewsParser
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class Results (
 //    @SerializedName("slug_name") val slug_name : String,
@@ -26,4 +27,4 @@ data class Results (
 //    @SerializedName("geo_facet") val geo_facet : String,
 //    @SerializedName("related_urls") val related_urls : List<Related_urls>,
     @SerializedName("multimedia") val multimedia : List<Multimedia>
-)
+):Serializable
