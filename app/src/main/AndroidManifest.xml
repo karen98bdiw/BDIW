@@ -11,7 +11,7 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".BdiwBrowser.BdiwBrowser">
+        <activity android:name=".bdiwbrowser.BdiwBrowser">
 
            <!--<intent-filter>-->
                <!--<action android:name="bdiwBrowser"/>-->
@@ -20,15 +20,13 @@
            <!--</intent-filter>-->
 
         </activity>
-        <activity android:name=".Activities.SignInActivity">
+        <activity android:name=".main.activities.SignInActivity">
         </activity>
-        <activity android:name=".Activities.ChatActivity">
+        <activity android:name=".communication.activities.ChatActivity">
         </activity>
-        <activity android:name=".Activities.HomeActivity">
+        <activity android:name=".main.activities.SignUpActivity">
         </activity>
-        <activity android:name=".Activities.SignUpActivity">
-        </activity>
-        <activity android:name=".Activities.MainActivity">
+        <activity android:name=".main.activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

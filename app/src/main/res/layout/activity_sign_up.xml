@@ -9,7 +9,7 @@
         android:paddingLeft="50dp"
         android:paddingRight="50dp"
         android:paddingTop="100dp"
-        tools:context=".Activities.SignUpActivity">
+        tools:context=".main.activities.SignUpActivity">
 
     <EditText android:id="@+id/signUpInputNameView" android:layout_width="match_parent" android:layout_height="50dp" android:hint="name"/>
     <EditText android:id="@+id/signUpInputSurnameView" android:layout_width="match_parent" android:layout_height="50dp" android:hint="surname"/>
