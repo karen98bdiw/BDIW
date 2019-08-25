@@ -1,5 +1,6 @@
 package com.example.bdiw.main.activities
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -19,12 +20,10 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.activity_main.*
 
-
 class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelectedListener {
 
     lateinit var mAut: FirebaseAuth
     var curentUser: FirebaseUser?=null
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,7 +47,7 @@ class MainActivity : AppCompatActivity(),NavigationView.OnNavigationItemSelected
             tabLayout.setupWithViewPager(viewPager)
             navigationView.setNavigationItemSelectedListener(this)
             setOnNavigationItemSelectedListener()
-//            startActivity(Intent(this@MainActivity,HomeActivity::class.java))
+//            startActivity(Intent(this@QuizBattleMainActivity,HomeActivity::class.java))
         }else{
             startActivity(Intent(this@MainActivity,SignUpActivity::class.java))
         }

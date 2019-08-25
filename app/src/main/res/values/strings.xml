@@ -2,4 +2,14 @@
     <string name="app_name">BDIW</string>
     <string name="toolbarmenu_searchitem_title">search</string>
     <string name="appLogoName">hello</string>
+    <string name="testDurationViewDescription">Duration is</string>
+    <string name="testQuestionsCountViewDescription">Question count is</string>
+    <string name="testCreaterUsernameViewDescription">Creator is</string>
+    <string name="goToCreateTestBtnText">Create</string>
+    <string name="sendTestBtnText">Send</string>
+    <string name="takeTestBtnText">Take</string>
+    <string name="addOptionBtnText">Add Option</string>
+    <string name="addQuestionBtnText">Add question</string>
+    <string name="goToCreateTestBtn">Create test</string>
+    <string name="createTestBtn">Submit</string>
 </resources>

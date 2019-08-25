@@ -9,5 +9,5 @@ data class Media (
     @SerializedName("caption") val caption : String,
     @SerializedName("copyright") val copyright : String,
     @SerializedName("approved_for_syndication") val approved_for_syndication : Int,
-    @SerializedName("media-metadata") val `media-metadata` : List<`Media-metadata`>
+    @SerializedName("media-metadata") val `media-metadata` : List<MediaMetadata>
 ):Serializable

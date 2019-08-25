@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        android:padding="20dp"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+            android:id="@+id/testRecyclerTestNameView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="some test"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+    />
+
+    <TextView
+            android:id="@+id/testRecyclerTestDurationView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textSize="15sp"
+            android:text="Test duration is 14"
+            app:layout_constraintTop_toBottomOf="@id/testRecyclerTestNameView"
+            app:layout_constraintLeft_toLeftOf="parent"
+    />
+
+    <TextView
+            android:id="@+id/testRecyclerTestQuestionsCountView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:text="Test question count is 4"
+            app:layout_constraintTop_toBottomOf="@id/testRecyclerTestDurationView"
+            app:layout_constraintLeft_toLeftOf="parent"
+    />
+
+    <Button
+            android:id="@+id/testRecyclerViewTestEditBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="edit"
+    />
+
+    <TextView
+            android:id="@+id/testRecyclerTestCreaterUsernameView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|right"
+            android:text="creator is aria stark"
+            app:layout_constraintTop_toBottomOf="@id/testRecyclerTestQuestionsCountView"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+    />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

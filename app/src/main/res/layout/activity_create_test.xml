@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        style="@style/ActivitiesDefaultStyle"
+        tools:context=".qizbattle.activities.CreateTestActivity">
+
+    <EditText
+            android:id="@+id/inAddTestNameInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:hint="test name"/>
+
+    <EditText
+            android:id="@+id/inAddTestDurationInput"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:hint="duration"
+            android:inputType="number"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/inAddTestNameInput"
+            app:layout_constraintRight_toLeftOf="@id/inAddTestLevelInput"
+            app:layout_constraintHorizontal_weight="0.5"
+    />
+
+    <Spinner
+            android:id="@+id/inAddTestLevelInput"
+            android:layout_width="0dp"
+            android:layout_height="20dp"
+            app:layout_constraintTop_toBottomOf="@id/inAddTestNameInput"
+            app:layout_constraintLeft_toRightOf="@id/inAddTestDurationInput"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintHorizontal_weight="0.5"
+    >
+
+    </Spinner>
+
+    <LinearLayout
+            android:id="@+id/inAddQuestionsShowArea"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@id/inAddTestDurationInput"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+    >
+
+    </LinearLayout>
+
+    <Button
+            android:id="@+id/goToCreateQuestionBtn"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="72dp"
+            android:text="@string/addQuestionBtnText"/>
+
+    <Button
+            android:id="@+id/createTestBtn"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/createTestBtn"/>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

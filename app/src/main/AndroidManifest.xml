@@ -33,6 +33,17 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
+        <activity android:name=".quizbattle.activities.TestResultActivity">
+        </activity>
+        <activity android:name=".quizbattle.activities.TakeTestActivity">
+        </activity>
+        <activity android:name=".quizbattle.activities.CreateQuestionActivity">
+        </activity>
+        <activity android:name=".quizbattle.activities.CreateTestActivity">
+        </activity>
+        <activity android:name=".quizbattle.activities.QuizBattleMainActivity">
+        </activity>
     </application>
 
 </manifest>

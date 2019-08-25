@@ -3,7 +3,7 @@ package com.example.bdiw.news.NewsJsonParserModel
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
-data class `Media-metadata` (
+data class MediaMetadata (
     @SerializedName("url") val url : String,
     @SerializedName("format") val format : String,
     @SerializedName("height") val height : Int,
